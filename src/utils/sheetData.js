@@ -11,7 +11,7 @@ import Papa from 'papaparse'
 // ============================================================
 export const SHEET_CONFIG = {
   // 替换为你的 Google Sheet ID
-  SHEET_ID: 'YOUR_GOOGLE_SHEET_ID_HERE',
+  SHEET_ID: '17kmpOVppPAPeHcld84o_82bslQ3VUvYRNLbxAAT5SOc',
   // 如果有多个 sheet tab，填入对应的 gid（默认第一个 tab 为 0）
   GID: '0',
 }
