@@ -25,7 +25,7 @@ const CACHE_TTL_MS = 24 * 60 * 60 * 1000 // 24 hours
  * 构建 Google Sheets CSV 导出 URL
  */
 export function buildSheetUrl(sheetId = SHEET_CONFIG.SHEET_ID, gid = SHEET_CONFIG.GID) {
-  return `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}`
+  return `https://docs.google.com/spreadsheets/d/e/2PACX-1vRr2OgjqbFwNWVcgb-n0Mtu73Y3Qh8AjR49Cj_9IEvcBQRy0NdMg5rzGjWLSzuilEkwjhaum-7eBzyH/pub?output=csv`
 }
 
 /**
