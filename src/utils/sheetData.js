@@ -145,14 +145,14 @@ export function computeTierStats(data) {
 }
 
 export const SOURCE_COLORS = {
-  VapeBarMarket: '#F59E0B',
-  VapesEurope:   '#3B82F6',
-  EuroCityVape:  '#8B5CF6',
-  Vapormo:       '#10B981',
-  RandMVapes:    '#EF4444',
-  Vapes001:      '#F97316',
-  EuroVapeLand:  '#06B6D4',
-  VapePurchase:  '#6B7280',
-  Vapsolo:       '#EC4899',
+  VapeBarMarket: '#111827',
+  VapesEurope:   '#1F2937',
+  EuroCityVape:  '#374151',
+  Vapormo:       '#4B5563',
+  RandMVapes:    '#6B7280',
+  Vapes001:      '#9CA3AF',
+  EuroVapeLand:  '#111827',
+  VapePurchase:  '#4B5563',
+  Vapsolo:       '#6B7280',
   '其他':         '#9CA3AF',
 }
