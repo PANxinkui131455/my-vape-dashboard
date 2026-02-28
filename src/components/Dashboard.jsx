@@ -7,30 +7,30 @@ import { SOURCE_COLORS, TIER_DEFINITIONS, getTier } from '../utils/sheetData.js'
 
 /* ─── Shared styles ──────────────────────────────────────────── */
 const css = `
-  .tab-btn { background: transparent; border: 1px solid #2A2A3A; color: #888; padding: 8px 20px; cursor: pointer; font-family: 'Syne', sans-serif; font-size: 13px; letter-spacing: 0.05em; transition: all 0.2s; border-bottom: none; border-top: none; }
-  .tab-btn.active { background: #FF6B35; border-color: #FF6B35; color: #fff; }
-  .tab-btn:hover:not(.active) { border-color: #FF6B35; color: #FF6B35; }
-  .tier-chip { padding: 5px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; border: 1px solid #2A2A3A; background: transparent; color: #888; font-family: 'Syne'; transition: all 0.2s; }
-  .tier-chip.active { background: #FF6B35; border-color: #FF6B35; color: #fff; }
-  .tier-chip:hover:not(.active) { border-color: #FF6B35; color: #E8E8F0; }
-  .card { background: #13131F; border: 1px solid #1E1E2E; border-radius: 8px; padding: 20px; }
-  .stat-val { font-family: 'Space Mono', monospace; font-size: 22px; color: #FF6B35; font-weight: 700; }
-  .stat-lbl { font-size: 11px; color: #666; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
-  .tbl-row:hover { background: #1A1A28; }
-  input[type=number] { background: #1E1E2E; border: 1px solid #2A2A3A; color: #E8E8F0; padding: 8px 12px; border-radius: 6px; font-family: 'Space Mono'; font-size: 14px; outline: none; width: 140px; }
-  input[type=number]:focus { border-color: #FF6B35; }
+  .tab-btn { background: transparent; border: 1px solid #D1D5DB; color: #4B5563; padding: 8px 20px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 0.05em; transition: all 0.2s; border-bottom: none; border-top: none; }
+  .tab-btn.active { background: #111827; border-color: #111827; color: #fff; }
+  .tab-btn:hover:not(.active) { border-color: #111827; color: #111827; }
+  .tier-chip { padding: 5px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; border: 1px solid #D1D5DB; background: transparent; color: #4B5563; font-family: 'Inter'; transition: all 0.2s; }
+  .tier-chip.active { background: #111827; border-color: #111827; color: #fff; }
+  .tier-chip:hover:not(.active) { border-color: #111827; color: #111827; }
+  .card { background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px; }
+  .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 22px; color: #111827; font-weight: 700; }
+  .stat-lbl { font-size: 11px; color: #6B7280; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+  .tbl-row:hover { background: #F3F4F6; }
+  input[type=number] { background: #E5E7EB; border: 1px solid #D1D5DB; color: #111827; padding: 8px 12px; border-radius: 6px; font-family: 'JetBrains Mono'; font-size: 14px; outline: none; width: 140px; }
+  input[type=number]:focus { border-color: #111827; }
   .rec-card { border-radius: 8px; padding: 16px 20px; text-align: center; }
-  .refresh-btn { background: transparent; border: 1px solid #2A2A3A; color: #888; padding: 6px 14px; cursor: pointer; font-family: 'Syne'; font-size: 12px; border-radius: 4px; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
-  .refresh-btn:hover { border-color: #FF6B35; color: #FF6B35; }
+  .refresh-btn { background: transparent; border: 1px solid #D1D5DB; color: #4B5563; padding: 6px 14px; cursor: pointer; font-family: 'Inter'; font-size: 12px; border-radius: 4px; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+  .refresh-btn:hover { border-color: #111827; color: #111827; }
   .refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   @keyframes spin { to { transform: rotate(360deg) } }
   .spinning { animation: spin 1s linear infinite; display: inline-block; }
 `
 
 const tooltipStyle = {
-  contentStyle: { background: '#13131F', border: '1px solid #2A2A3A', borderRadius: 8, fontFamily: 'Space Mono', fontSize: 12 },
-  labelStyle: { color: '#FF6B35' },
-  itemStyle: { color: '#E8E8F0' },
+  contentStyle: { background: '#FFFFFF', border: '1px solid #D1D5DB', borderRadius: 8, fontFamily: 'JetBrains Mono', fontSize: 12 },
+  labelStyle: { color: '#111827' },
+  itemStyle: { color: '#111827' },
 }
 
 /* ─── Main Dashboard ─────────────────────────────────────────── */
@@ -80,21 +80,21 @@ export default function Dashboard({ data, tierStats, meta, loading, onRefresh })
   const sources = [...new Set(data.map(d => d.source))].length
 
   return (
-    <div style={{ fontFamily: "'Syne', sans-serif", background: '#0A0A0F', minHeight: '100vh', color: '#E8E8F0' }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: '#F3F4F6', minHeight: '100vh', color: '#111827' }}>
       <style>{css}</style>
 
       {/* ── Header ── */}
-      <div style={{ background: 'linear-gradient(135deg, #0F0F1E 0%, #1A0A0A 100%)', padding: '28px 40px 0', borderBottom: '1px solid #1E1E2E' }}>
+      <div style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 100%)', padding: '28px 40px 0', borderBottom: '1px solid #E5E7EB' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 20 }}>
           <div>
-            <div style={{ fontSize: 11, color: '#FF6B35', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8, fontFamily: 'Space Mono' }}>
+            <div style={{ fontSize: 11, color: '#111827', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8, fontFamily: 'JetBrains Mono' }}>
               欧洲一次性电子烟 · 实时竞品追踪
             </div>
             <h1 style={{ fontSize: 30, fontWeight: 800, margin: 0, lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-              竞品价格分析 <span style={{ color: '#FF6B35' }}>Dashboard</span>
+              竞品价格分析 <span style={{ color: '#111827' }}>Dashboard</span>
             </h1>
-            <p style={{ margin: '8px 0 0', color: '#666', fontSize: 13 }}>
-              数据来源：Google Sheets 实时同步 · <span style={{ color: '#CCC' }}>{totalProducts}</span> 条产品 · <span style={{ color: '#CCC' }}>{sources}</span> 个平台
+            <p style={{ margin: '8px 0 0', color: '#6B7280', fontSize: 13 }}>
+              数据来源：Google Sheets 实时同步 · <span style={{ color: '#111827' }}>{totalProducts}</span> 条产品 · <span style={{ color: '#111827' }}>{sources}</span> 个平台
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export default function Dashboard({ data, tierStats, meta, loading, onRefresh })
               {loading ? '更新中...' : '立即刷新'}
             </button>
             {meta && (
-              <div style={{ fontSize: 11, color: '#555', fontFamily: 'Space Mono' }}>
+              <div style={{ fontSize: 11, color: '#6B7280', fontFamily: 'JetBrains Mono' }}>
                 {meta.fromCache ? '📦 缓存' : '✅ 实时'} · 更新于 {meta.cachedAt.toLocaleString('zh-CN', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
               </div>
             )}
@@ -118,7 +118,7 @@ export default function Dashboard({ data, tierStats, meta, loading, onRefresh })
         </div>
 
         {/* Tabs */}
-        <div style={{ display: 'flex', gap: 0, borderBottom: '1px solid #1E1E2E' }}>
+        <div style={{ display: 'flex', gap: 0, borderBottom: '1px solid #E5E7EB' }}>
           {[['overview', '📊 市场全貌'], ['tier', '🎯 档位分析'], ['scatter', '📈 散点图'], ['calc', '💡 定价计算器'], ['table', '📋 全量数据']].map(([id, label]) => (
             <button key={id} className={`tab-btn ${activeTab === id ? 'active' : ''}`} onClick={() => setActiveTab(id)}>{label}</button>
           ))}
@@ -180,36 +180,36 @@ function Overview({ priceCurveData, tierStats, totalProducts }) {
           <div key={i} className="card">
             <div className="stat-lbl">{k.label}</div>
             <div className="stat-val">{k.val}</div>
-            <div style={{ fontSize: 11, color: '#555', marginTop: 4 }}>{k.sub}</div>
+            <div style={{ fontSize: 11, color: '#6B7280', marginTop: 4 }}>{k.sub}</div>
           </div>
         ))}
       </div>
 
       <div className="card" style={{ marginBottom: 20 }}>
-        <h3 style={{ margin: '0 0 20px', fontSize: 13, color: '#888', textTransform: 'uppercase', letterSpacing: '0.06em' }}>各档位价格区间（€）</h3>
+        <h3 style={{ margin: '0 0 20px', fontSize: 13, color: '#4B5563', textTransform: 'uppercase', letterSpacing: '0.06em' }}>各档位价格区间（€）</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={priceCurveData} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1E1E2E" vertical={false} />
-            <XAxis dataKey="tier" tick={{ fill: '#666', fontSize: 12 }} axisLine={{ stroke: '#2A2A3A' }} tickLine={false} />
-            <YAxis tick={{ fill: '#666', fontSize: 11, fontFamily: 'Space Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `€${v}`} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
+            <XAxis dataKey="tier" tick={{ fill: '#6B7280', fontSize: 12 }} axisLine={{ stroke: '#D1D5DB' }} tickLine={false} />
+            <YAxis tick={{ fill: '#6B7280', fontSize: 11, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `€${v}`} />
             <Tooltip {...tooltipStyle} formatter={(v, n) => [`€${v}`, n === 'avgPrice' ? '平均价' : n === 'minPrice' ? '最低价' : '最高价']} />
             <Legend formatter={v => v === 'avgPrice' ? '平均价' : v === 'minPrice' ? '最低价' : '最高价'} wrapperStyle={{ fontSize: 12 }} />
-            <Bar dataKey="minPrice" fill="#10B981" name="minPrice" radius={[4, 4, 0, 0]} opacity={0.7} />
-            <Bar dataKey="avgPrice" fill="#FF6B35" name="avgPrice" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="maxPrice" fill="#EF4444" name="maxPrice" radius={[4, 4, 0, 0]} opacity={0.5} />
+            <Bar dataKey="minPrice" fill="#374151" name="minPrice" radius={[4, 4, 0, 0]} opacity={0.7} />
+            <Bar dataKey="avgPrice" fill="#111827" name="avgPrice" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="maxPrice" fill="#111827" name="maxPrice" radius={[4, 4, 0, 0]} opacity={0.5} />
           </BarChart>
         </ResponsiveContainer>
       </div>
 
       <div className="card">
-        <h3 style={{ margin: '0 0 20px', fontSize: 13, color: '#888', textTransform: 'uppercase', letterSpacing: '0.06em' }}>€/千口 成本趋势（容量越大单口成本越低）</h3>
+        <h3 style={{ margin: '0 0 20px', fontSize: 13, color: '#4B5563', textTransform: 'uppercase', letterSpacing: '0.06em' }}>€/千口 成本趋势（容量越大单口成本越低）</h3>
         <ResponsiveContainer width="100%" height={220}>
           <LineChart data={priceCurveData} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1E1E2E" vertical={false} />
-            <XAxis dataKey="tier" tick={{ fill: '#666', fontSize: 12 }} axisLine={{ stroke: '#2A2A3A' }} tickLine={false} />
-            <YAxis tick={{ fill: '#666', fontSize: 11, fontFamily: 'Space Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `€${v.toFixed(2)}`} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
+            <XAxis dataKey="tier" tick={{ fill: '#6B7280', fontSize: 12 }} axisLine={{ stroke: '#D1D5DB' }} tickLine={false} />
+            <YAxis tick={{ fill: '#6B7280', fontSize: 11, fontFamily: 'JetBrains Mono' }} axisLine={false} tickLine={false} tickFormatter={v => `€${v.toFixed(2)}`} />
             <Tooltip {...tooltipStyle} formatter={v => [`€${Number(v).toFixed(4)}/千口`, '平均单口成本']} />
-            <Line type="monotone" dataKey="avgPPU" stroke="#FF6B35" strokeWidth={2.5} dot={{ fill: '#FF6B35', r: 5 }} activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="avgPPU" stroke="#111827" strokeWidth={2.5} dot={{ fill: '#111827', r: 5 }} activeDot={{ r: 8 }} />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -250,8 +250,8 @@ function TierAnalysis({ tierStats, selectedTier, setSelectedTier, selectedTierDa
           </div>
 
           <div className="card" style={{ marginBottom: 20 }}>
-            <h3 style={{ margin: '0 0 16px', fontSize: 12, color: '#888', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{selectedTier} · 推荐定价区间</h3>
-            <div style={{ height: 8, background: 'linear-gradient(90deg, #10B981 0%, #FF6B35 50%, #EF4444 100%)', borderRadius: 4, marginBottom: 12, position: 'relative' }}>
+            <h3 style={{ margin: '0 0 16px', fontSize: 12, color: '#4B5563', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{selectedTier} · 推荐定价区间</h3>
+            <div style={{ height: 8, background: 'linear-gradient(90deg, #374151 0%, #111827 50%, #111827 100%)', borderRadius: 4, marginBottom: 12, position: 'relative' }}>
               <div style={{
                 position: 'absolute',
                 left: `${Math.max(0, Math.min(100, ((selectedTierData.avgPrice - selectedTierData.minPrice) / Math.max(1, selectedTierData.maxPrice - selectedTierData.minPrice) * 100)))}%`,
@@ -262,21 +262,21 @@ function TierAnalysis({ tierStats, selectedTier, setSelectedTier, selectedTierDa
                 background: '#fff',
               }} />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: '#666', fontFamily: 'Space Mono' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: '#6B7280', fontFamily: 'JetBrains Mono' }}>
               <span>€{selectedTierData.minPrice.toFixed(2)} 最低</span>
-              <span style={{ color: '#FF6B35' }}>均价 ±8% → €{(selectedTierData.avgPrice * 0.92).toFixed(2)} ~ €{(selectedTierData.avgPrice * 1.08).toFixed(2)}</span>
+              <span style={{ color: '#111827' }}>均价 ±8% → €{(selectedTierData.avgPrice * 0.92).toFixed(2)} ~ €{(selectedTierData.avgPrice * 1.08).toFixed(2)}</span>
               <span>€{selectedTierData.maxPrice.toFixed(2)} 最高</span>
             </div>
           </div>
 
           <div className="card">
-            <h3 style={{ margin: '0 0 16px', fontSize: 12, color: '#888', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{selectedTier} 全部产品 (按价格排序)</h3>
+            <h3 style={{ margin: '0 0 16px', fontSize: 12, color: '#4B5563', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{selectedTier} 全部产品 (按价格排序)</h3>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid #1E1E2E' }}>
+                  <tr style={{ borderBottom: '1px solid #E5E7EB' }}>
                     {['产品名称', '平台', 'Puffs', '售价', '€/千口', 'vs均价'].map(h => (
-                      <th key={h} style={{ padding: '10px 12px', textAlign: 'left', color: '#555', fontSize: 11, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{h}</th>
+                      <th key={h} style={{ padding: '10px 12px', textAlign: 'left', color: '#6B7280', fontSize: 11, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
@@ -284,18 +284,18 @@ function TierAnalysis({ tierStats, selectedTier, setSelectedTier, selectedTierDa
                   {[...selectedTierData.items].sort((a, b) => a.price - b.price).map((item, i) => {
                     const diff = ((item.price - selectedTierData.avgPrice) / selectedTierData.avgPrice * 100)
                     return (
-                      <tr key={i} className="tbl-row" style={{ borderBottom: '1px solid #12121E' }}>
+                      <tr key={i} className="tbl-row" style={{ borderBottom: '1px solid #ECEFF3' }}>
                         <td style={{ padding: '8px 12px', maxWidth: 280, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                          <a href={item.link} target="_blank" rel="noopener" style={{ color: '#CCC', textDecoration: 'none' }}>{item.name}</a>
+                          <a href={item.link} target="_blank" rel="noopener" style={{ color: '#111827', textDecoration: 'none' }}>{item.name}</a>
                         </td>
                         <td style={{ padding: '8px 12px' }}>
-                          <span style={{ padding: '2px 7px', borderRadius: 4, fontSize: 11, background: (SOURCE_COLORS[item.source] || '#666') + '22', color: SOURCE_COLORS[item.source] || '#888' }}>{item.source}</span>
+                          <span style={{ padding: '2px 7px', borderRadius: 4, fontSize: 11, background: (SOURCE_COLORS[item.source] || '#6B7280') + '22', color: SOURCE_COLORS[item.source] || '#4B5563' }}>{item.source}</span>
                         </td>
-                        <td style={{ padding: '8px 12px', fontFamily: 'Space Mono', fontSize: 12, color: '#888' }}>{(item.puffs / 1000).toFixed(0)}K</td>
-                        <td style={{ padding: '8px 12px', fontFamily: 'Space Mono', fontSize: 13, fontWeight: 700 }}>€{item.price.toFixed(2)}</td>
-                        <td style={{ padding: '8px 12px', fontFamily: 'Space Mono', fontSize: 12, color: '#888' }}>€{item.ppu.toFixed(4)}</td>
+                        <td style={{ padding: '8px 12px', fontFamily: 'JetBrains Mono', fontSize: 12, color: '#4B5563' }}>{(item.puffs / 1000).toFixed(0)}K</td>
+                        <td style={{ padding: '8px 12px', fontFamily: 'JetBrains Mono', fontSize: 13, fontWeight: 700 }}>€{item.price.toFixed(2)}</td>
+                        <td style={{ padding: '8px 12px', fontFamily: 'JetBrains Mono', fontSize: 12, color: '#4B5563' }}>€{item.ppu.toFixed(4)}</td>
                         <td style={{ padding: '8px 12px' }}>
-                          <span style={{ fontSize: 11, color: diff > 5 ? '#EF4444' : diff < -5 ? '#10B981' : '#F59E0B', fontFamily: 'Space Mono' }}>
+                          <span style={{ fontSize: 11, color: diff > 5 ? '#111827' : diff < -5 ? '#374151' : '#6B7280', fontFamily: 'JetBrains Mono' }}>
                             {diff > 0 ? '+' : ''}{diff.toFixed(1)}%
                           </span>
                         </td>
@@ -308,7 +308,7 @@ function TierAnalysis({ tierStats, selectedTier, setSelectedTier, selectedTierDa
           </div>
         </>
       ) : (
-        <div className="card" style={{ textAlign: 'center', padding: 60, color: '#555' }}>该档位暂无数据</div>
+        <div className="card" style={{ textAlign: 'center', padding: 60, color: '#6B7280' }}>该档位暂无数据</div>
       )}
     </div>
   )
@@ -319,29 +319,29 @@ function ScatterView({ scatterData }) {
   const sources = [...new Set(scatterData.map(d => d.source))]
   return (
     <div className="card">
-      <h3 style={{ margin: '0 0 6px', fontSize: 13, color: '#888', textTransform: 'uppercase', letterSpacing: '0.06em' }}>价格 vs 口数 散点图（≤100K Puffs）</h3>
-      <p style={{ color: '#555', fontSize: 12, margin: '0 0 16px' }}>悬停查看产品详情，颜色区分平台</p>
+      <h3 style={{ margin: '0 0 6px', fontSize: 13, color: '#4B5563', textTransform: 'uppercase', letterSpacing: '0.06em' }}>价格 vs 口数 散点图（≤100K Puffs）</h3>
+      <p style={{ color: '#6B7280', fontSize: 12, margin: '0 0 16px' }}>悬停查看产品详情，颜色区分平台</p>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 16 }}>
         {sources.map(s => (
-          <span key={s} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: SOURCE_COLORS[s] || '#888' }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: SOURCE_COLORS[s] || '#888', display: 'inline-block' }} />{s}
+          <span key={s} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: SOURCE_COLORS[s] || '#4B5563' }}>
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: SOURCE_COLORS[s] || '#4B5563', display: 'inline-block' }} />{s}
           </span>
         ))}
       </div>
       <ResponsiveContainer width="100%" height={440}>
         <ScatterChart margin={{ top: 10, right: 20, left: 0, bottom: 20 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1E1E2E" />
-          <XAxis dataKey="x" type="number" name="Puffs" tick={{ fill: '#666', fontSize: 11, fontFamily: 'Space Mono' }} tickFormatter={v => `${v}K`} label={{ value: '口数（千）', position: 'insideBottom', offset: -10, fill: '#555', fontSize: 12 }} domain={[0, 100]} />
-          <YAxis dataKey="y" type="number" name="Price" tick={{ fill: '#666', fontSize: 11, fontFamily: 'Space Mono' }} tickFormatter={v => `€${v}`} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+          <XAxis dataKey="x" type="number" name="Puffs" tick={{ fill: '#6B7280', fontSize: 11, fontFamily: 'JetBrains Mono' }} tickFormatter={v => `${v}K`} label={{ value: '口数（千）', position: 'insideBottom', offset: -10, fill: '#6B7280', fontSize: 12 }} domain={[0, 100]} />
+          <YAxis dataKey="y" type="number" name="Price" tick={{ fill: '#6B7280', fontSize: 11, fontFamily: 'JetBrains Mono' }} tickFormatter={v => `€${v}`} />
           <Tooltip
             {...tooltipStyle}
-            cursor={{ strokeDasharray: '3 3', stroke: '#FF6B35' }}
+            cursor={{ strokeDasharray: '3 3', stroke: '#111827' }}
             formatter={(v, n) => n === 'x' ? [`${v}K puffs`, '口数'] : [`€${v}`, '价格']}
             labelFormatter={(_, payload) => payload?.[0]?.payload?.name || ''}
           />
           {sources.map(source => {
             const pts = scatterData.filter(d => d.source === source)
-            return pts.length > 0 ? <Scatter key={source} name={source} data={pts} fill={SOURCE_COLORS[source] || '#888'} opacity={0.75} /> : null
+            return pts.length > 0 ? <Scatter key={source} name={source} data={pts} fill={SOURCE_COLORS[source] || '#4B5563'} opacity={0.75} /> : null
           })}
         </ScatterChart>
       </ResponsiveContainer>
@@ -355,12 +355,12 @@ function Calculator({ myPuffs, setMyPuffs, calcRecommendation }) {
     <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: 20 }}>
       <div>
         <div className="card" style={{ marginBottom: 16 }}>
-          <h3 style={{ margin: '0 0 20px', fontSize: 13, color: '#FF6B35', textTransform: 'uppercase', letterSpacing: '0.06em' }}>🎯 输入产品参数</h3>
+          <h3 style={{ margin: '0 0 20px', fontSize: 13, color: '#111827', textTransform: 'uppercase', letterSpacing: '0.06em' }}>🎯 输入产品参数</h3>
           <div style={{ marginBottom: 16 }}>
-            <label style={{ fontSize: 12, color: '#888', display: 'block', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>产品口数（Puffs）</label>
+            <label style={{ fontSize: 12, color: '#4B5563', display: 'block', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>产品口数（Puffs）</label>
             <input type="number" value={myPuffs} onChange={e => setMyPuffs(+e.target.value)} min={1000} step={1000} />
-            <div style={{ fontSize: 11, color: '#555', marginTop: 6 }}>
-              当前档位：<span style={{ color: '#FF6B35', fontFamily: 'Space Mono' }}>{getTier(myPuffs)}</span>
+            <div style={{ fontSize: 11, color: '#6B7280', marginTop: 6 }}>
+              当前档位：<span style={{ color: '#111827', fontFamily: 'JetBrains Mono' }}>{getTier(myPuffs)}</span>
             </div>
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
@@ -370,11 +370,11 @@ function Calculator({ myPuffs, setMyPuffs, calcRecommendation }) {
           </div>
         </div>
 
-        <div className="card" style={{ background: '#0A0A14', borderColor: '#FF6B3533' }}>
-          <div style={{ fontSize: 11, color: '#FF6B35', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>📌 定价规律总结</div>
+        <div className="card" style={{ background: '#0A0A14', borderColor: '#11182733' }}>
+          <div style={{ fontSize: 11, color: '#111827', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>📌 定价规律总结</div>
           {['10K以下：€1.5-3.0/千口，售价 €9-22', '10K-20K：€1.0-1.6/千口，售价 €13-27', '20K-40K：€0.6-1.2/千口，售价 €19-36', '40K+：€0.4-0.8/千口，售价 €20-35', '批发价通常为零售价 40-60%', '品牌溢价产品可高于均价 20-30%'].map((tip, i) => (
-            <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 7, fontSize: 12, color: '#888', lineHeight: 1.5 }}>
-              <span style={{ color: '#FF6B35' }}>—</span><span>{tip}</span>
+            <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 7, fontSize: 12, color: '#4B5563', lineHeight: 1.5 }}>
+              <span style={{ color: '#111827' }}>—</span><span>{tip}</span>
             </div>
           ))}
         </div>
@@ -383,19 +383,19 @@ function Calculator({ myPuffs, setMyPuffs, calcRecommendation }) {
       <div>
         {calcRecommendation ? (
           <>
-            <div style={{ marginBottom: 14, padding: '12px 18px', background: '#13131F', borderRadius: 8, borderLeft: '3px solid #FF6B35', fontSize: 12, color: '#888' }}>
-              分析基于 <span style={{ color: '#E8E8F0', fontFamily: 'Space Mono' }}>{calcRecommendation.count}</span> 款竞品 · 档位 <span style={{ color: '#FF6B35', fontFamily: 'Space Mono' }}>{calcRecommendation.tier}</span>
+            <div style={{ marginBottom: 14, padding: '12px 18px', background: '#FFFFFF', borderRadius: 8, borderLeft: '3px solid #111827', fontSize: 12, color: '#4B5563' }}>
+              分析基于 <span style={{ color: '#111827', fontFamily: 'JetBrains Mono' }}>{calcRecommendation.count}</span> 款竞品 · 档位 <span style={{ color: '#111827', fontFamily: 'JetBrains Mono' }}>{calcRecommendation.tier}</span>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 20 }}>
               {[
-                { label: '进取定价', desc: '低于均价 ~5%，快速抢占份额', price: calcRecommendation.conservative, color: '#10B981', badge: '竞争力强' },
-                { label: '市场均价', desc: '与竞品持平，稳健入市', price: calcRecommendation.market, color: '#FF6B35', badge: '推荐' },
-                { label: '溢价定价', desc: '高于均价 ~10%，品质溢价', price: calcRecommendation.premium, color: '#F59E0B', badge: '利润优先' },
+                { label: '进取定价', desc: '低于均价 ~5%，快速抢占份额', price: calcRecommendation.conservative, color: '#374151', badge: '竞争力强' },
+                { label: '市场均价', desc: '与竞品持平，稳健入市', price: calcRecommendation.market, color: '#111827', badge: '推荐' },
+                { label: '溢价定价', desc: '高于均价 ~10%，品质溢价', price: calcRecommendation.premium, color: '#6B7280', badge: '利润优先' },
               ].map((r, i) => (
                 <div key={i} className="rec-card" style={{ background: r.color + '11', border: `1px solid ${r.color}44` }}>
                   <div style={{ fontSize: 10, color: r.color, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>{r.label}</div>
-                  <div style={{ fontSize: 36, fontWeight: 800, color: r.color, fontFamily: 'Space Mono', lineHeight: 1 }}>€{r.price}</div>
-                  <div style={{ fontSize: 11, color: '#888', margin: '8px 0 6px', lineHeight: 1.5 }}>{r.desc}</div>
+                  <div style={{ fontSize: 36, fontWeight: 800, color: r.color, fontFamily: 'JetBrains Mono', lineHeight: 1 }}>€{r.price}</div>
+                  <div style={{ fontSize: 11, color: '#4B5563', margin: '8px 0 6px', lineHeight: 1.5 }}>{r.desc}</div>
                   <span style={{ fontSize: 10, padding: '2px 8px', borderRadius: 10, background: r.color + '22', color: r.color }}>{r.badge}</span>
                 </div>
               ))}
@@ -404,32 +404,32 @@ function Calculator({ myPuffs, setMyPuffs, calcRecommendation }) {
             <div className="card" style={{ marginBottom: 16 }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12 }}>
                 {[
-                  { label: '市场最低 €/千口', val: calcRecommendation.ppu_low, color: '#10B981' },
-                  { label: '市场均值 €/千口', val: calcRecommendation.ppu_mid, color: '#FF6B35' },
-                  { label: '市场最高 €/千口', val: calcRecommendation.ppu_high, color: '#EF4444' },
+                  { label: '市场最低 €/千口', val: calcRecommendation.ppu_low, color: '#374151' },
+                  { label: '市场均值 €/千口', val: calcRecommendation.ppu_mid, color: '#111827' },
+                  { label: '市场最高 €/千口', val: calcRecommendation.ppu_high, color: '#111827' },
                 ].map((p, i) => (
-                  <div key={i} style={{ textAlign: 'center', padding: 12, background: '#0A0A0F', borderRadius: 6 }}>
-                    <div style={{ fontSize: 10, color: '#555', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>{p.label}</div>
-                    <div style={{ fontFamily: 'Space Mono', fontSize: 16, color: p.color, fontWeight: 700 }}>€{p.val}</div>
+                  <div key={i} style={{ textAlign: 'center', padding: 12, background: '#F3F4F6', borderRadius: 6 }}>
+                    <div style={{ fontSize: 10, color: '#6B7280', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>{p.label}</div>
+                    <div style={{ fontFamily: 'JetBrains Mono', fontSize: 16, color: p.color, fontWeight: 700 }}>€{p.val}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="card">
-              <h4 style={{ margin: '0 0 12px', fontSize: 12, color: '#888', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{calcRecommendation.tier} 档位参考竞品</h4>
+              <h4 style={{ margin: '0 0 12px', fontSize: 12, color: '#4B5563', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{calcRecommendation.tier} 档位参考竞品</h4>
               <div style={{ maxHeight: 260, overflowY: 'auto' }}>
                 {[...calcRecommendation.items].sort((a, b) => a.price - b.price).slice(0, 15).map((item, i) => (
-                  <div key={i} className="tbl-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '7px 10px', borderBottom: '1px solid #12121E', fontSize: 12 }}>
-                    <span style={{ color: '#CCC', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', paddingRight: 10 }}>{item.name}</span>
-                    <span style={{ fontFamily: 'Space Mono', color: '#FF6B35', fontWeight: 700, flexShrink: 0 }}>€{item.price.toFixed(2)}</span>
+                  <div key={i} className="tbl-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '7px 10px', borderBottom: '1px solid #ECEFF3', fontSize: 12 }}>
+                    <span style={{ color: '#111827', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', paddingRight: 10 }}>{item.name}</span>
+                    <span style={{ fontFamily: 'JetBrains Mono', color: '#111827', fontWeight: 700, flexShrink: 0 }}>€{item.price.toFixed(2)}</span>
                   </div>
                 ))}
               </div>
             </div>
           </>
         ) : (
-          <div className="card" style={{ textAlign: 'center', padding: 60, color: '#555' }}>请输入产品口数以查看定价建议</div>
+          <div className="card" style={{ textAlign: 'center', padding: 60, color: '#6B7280' }}>请输入产品口数以查看定价建议</div>
         )}
       </div>
     </div>
@@ -461,21 +461,21 @@ function FullTable({ data }) {
   return (
     <div className="card">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <h3 style={{ margin: 0, fontSize: 13, color: '#888', textTransform: 'uppercase', letterSpacing: '0.06em' }}>全量数据 ({filtered.length} / {data.length})</h3>
+        <h3 style={{ margin: 0, fontSize: 13, color: '#4B5563', textTransform: 'uppercase', letterSpacing: '0.06em' }}>全量数据 ({filtered.length} / {data.length})</h3>
         <input
           type="text"
           placeholder="搜索产品名或平台..."
           value={search}
           onChange={e => setSearch(e.target.value)}
-          style={{ background: '#1E1E2E', border: '1px solid #2A2A3A', color: '#E8E8F0', padding: '7px 12px', borderRadius: 6, fontFamily: 'Syne', fontSize: 13, outline: 'none', width: 220 }}
+          style={{ background: '#E5E7EB', border: '1px solid #D1D5DB', color: '#111827', padding: '7px 12px', borderRadius: 6, fontFamily: 'Inter', fontSize: 13, outline: 'none', width: 220 }}
         />
       </div>
       <div style={{ overflowX: 'auto', maxHeight: 600, overflowY: 'auto' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
-          <thead style={{ position: 'sticky', top: 0, background: '#13131F', zIndex: 1 }}>
-            <tr style={{ borderBottom: '1px solid #1E1E2E' }}>
+          <thead style={{ position: 'sticky', top: 0, background: '#FFFFFF', zIndex: 1 }}>
+            <tr style={{ borderBottom: '1px solid #E5E7EB' }}>
               {[['name', '产品名称'], ['source', '平台'], ['puffs', 'Puffs'], ['price', '售价'], ['ppu', '€/千口'], ['gradient', '梯度价格']].map(([k, label]) => (
-                <th key={k} onClick={() => handleSort(k)} style={{ padding: '10px 12px', textAlign: 'left', color: sortKey === k ? '#FF6B35' : '#555', fontSize: 11, letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap' }}>
+                <th key={k} onClick={() => handleSort(k)} style={{ padding: '10px 12px', textAlign: 'left', color: sortKey === k ? '#111827' : '#6B7280', fontSize: 11, letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap' }}>
                   {label}<SortIcon k={k} />
                 </th>
               ))}
@@ -483,17 +483,17 @@ function FullTable({ data }) {
           </thead>
           <tbody>
             {filtered.map((item, i) => (
-              <tr key={i} className="tbl-row" style={{ borderBottom: '1px solid #12121E' }}>
+              <tr key={i} className="tbl-row" style={{ borderBottom: '1px solid #ECEFF3' }}>
                 <td style={{ padding: '8px 12px', maxWidth: 300, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  <a href={item.link} target="_blank" rel="noopener" style={{ color: '#CCC', textDecoration: 'none' }}>{item.name}</a>
+                  <a href={item.link} target="_blank" rel="noopener" style={{ color: '#111827', textDecoration: 'none' }}>{item.name}</a>
                 </td>
                 <td style={{ padding: '8px 12px' }}>
-                  <span style={{ padding: '2px 7px', borderRadius: 4, fontSize: 11, background: (SOURCE_COLORS[item.source] || '#666') + '22', color: SOURCE_COLORS[item.source] || '#888' }}>{item.source}</span>
+                  <span style={{ padding: '2px 7px', borderRadius: 4, fontSize: 11, background: (SOURCE_COLORS[item.source] || '#6B7280') + '22', color: SOURCE_COLORS[item.source] || '#4B5563' }}>{item.source}</span>
                 </td>
-                <td style={{ padding: '8px 12px', fontFamily: 'Space Mono', fontSize: 12, color: '#888' }}>{item.puffs ? `${(item.puffs / 1000).toFixed(0)}K` : '—'}</td>
-                <td style={{ padding: '8px 12px', fontFamily: 'Space Mono', fontSize: 13, fontWeight: 700, color: '#E8E8F0' }}>€{item.price.toFixed(2)}</td>
-                <td style={{ padding: '8px 12px', fontFamily: 'Space Mono', fontSize: 12, color: '#888' }}>{item.ppu ? `€${item.ppu.toFixed(4)}` : '—'}</td>
-                <td style={{ padding: '8px 12px', fontSize: 12, color: '#666' }}>{item.gradient || '—'}</td>
+                <td style={{ padding: '8px 12px', fontFamily: 'JetBrains Mono', fontSize: 12, color: '#4B5563' }}>{item.puffs ? `${(item.puffs / 1000).toFixed(0)}K` : '—'}</td>
+                <td style={{ padding: '8px 12px', fontFamily: 'JetBrains Mono', fontSize: 13, fontWeight: 700, color: '#111827' }}>€{item.price.toFixed(2)}</td>
+                <td style={{ padding: '8px 12px', fontFamily: 'JetBrains Mono', fontSize: 12, color: '#4B5563' }}>{item.ppu ? `€${item.ppu.toFixed(4)}` : '—'}</td>
+                <td style={{ padding: '8px 12px', fontSize: 12, color: '#6B7280' }}>{item.gradient || '—'}</td>
               </tr>
             ))}
           </tbody>
